@@ -5,12 +5,14 @@ import Navbar from './components/navbar/Navbar'
 import Features from './components/features/Features'
 import Newsletter from './components/newsletter/Newsletter'
 import Footer from './components/footer/Footer'
+import Blog from './components/blog/Blog'
 
 function App() {
   return (
     <>
       <Navbar />
       <Hero />
+      <Blog />
       <Features />
       <FAQ />
       <Newsletter />
