@@ -1,55 +1,41 @@
-
-const footerColumns = [
-  {
-    title: "Support",
-    links: ["Contact", "FAQs", "Pricing Plans", "Sitemap"],
-  },
-  {
-    title: "Quick Links",
-    links: ["Jobs", "Courses", "Paid Training", "Blog"],
-  },
-  {
-    title: "Category",
-    links: ["Graphics", "Programming", "eCommerce", "Freelancing"],
-  },
-];
+import { NavLink } from "react-router";
 
 export default function Footer() {
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+    { name: "Pricing", path: "/pricing" },
+  ];
+
+  const linkClasses = ({ isActive }: { isActive: boolean }) =>
+    `transition-colors ${
+      isActive ? "text-white" : "text-gray-400 hover:text-white"
+    }`;
+
   return (
-    <footer className="bg-[#1E2235] text-gray-300 px-6 py-12">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div>
-          <div className="flex items-center space-x-2 mb-4">
-            <div className="bg-orange-500 rounded-full w-6 h-6 flex items-center justify-center text-white font-bold">M</div>
-            <h1 className="text-2xl font-semibold">My Site</h1>
-          </div>
-          <p className="text-sm itali mt-2c">Karachi, Pakistan</p>
-          <p className="text-sm italic mt-2">Phone: (123) 456-7890</p>
-          <p className="text-sm italic mt-2">Mail: mysite@mysite.com</p>
+    <footer className="bg-gray-950 text-gray-400 py-12 border-t border-gray-800">
+      <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center md:justify-between gap-6">
+        {/* Branding */}
+        <div className="text-2xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          SoftWave
         </div>
 
-        {footerColumns.map((col, index) => (
-          <div key={index}>
-            <h2 className="text-lg font-semibold mb-4">{col.title}</h2>
-            <ul className="space-y-2">
-              {col.links.map((link, idx) => (
-                <li key={idx}>
-                  <a href="#" className="hover:text-white">
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {/* Navigation Links */}
+        <nav className="flex flex-wrap justify-center gap-6">
+          {navItems.map((item) => (
+            <NavLink key={item.name} to={item.path} className={linkClasses} end>
+              {item.name}
+            </NavLink>
+          ))}
+        </nav>
+
+    
       </div>
 
-      <div className="mt-12 border-t border-gray-600 pt-6 flex  md:flex-row items-center justify-center">
-        <p className="text-sm">Developed by <span className="text-white font-medium">Aimal Asim</span></p>
-
-      </div>
-
-      <div className="fixed bottom-6 right-6">
+      {/* Copyright */}
+      <div className="mt-10 text-center text-sm text-gray-500 select-none">
+        &copy; {new Date().getFullYear()} SoftWave. All rights reserved.
       </div>
     </footer>
   );

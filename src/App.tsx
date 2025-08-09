@@ -1,24 +1,17 @@
+import { Routes, Route } from 'react-router'
 import './App.css'
-import FAQ from './components/faq/FAQ'
-import Hero from './components/hero/Hero'
-import Navbar from './components/navbar/Navbar'
-import Features from './components/features/Features'
-import Newsletter from './components/newsletter/Newsletter'
-import Footer from './components/footer/Footer'
-import Blog from './components/blog/Blog'
-
+import Home from './pages/Home'
+import About from './pages/About'
+import Contact from './pages/Contact'
+import Pricing from './pages/Pricing'
 function App() {
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <Blog />
-      <Features />
-      <FAQ />
-      <Newsletter />
-      <Footer />
-
-    </>
+    <Routes>
+      <Route path='/' element={<Home/>} />
+      <Route path='/about' element={<About/>} />
+      <Route path='/contact' element={<Contact/>} />
+      <Route path='/pricing' element={<Pricing />}/>
+    </Routes>
   )
 }
 
